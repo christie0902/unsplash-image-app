@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 export default function SubpageLayout() {
   return (
     <>
-      <Link to="/">&lt; &lt; Back</Link>
+      <Link to="/" class="back-button">&lt; &lt; Back to Home &gt; &gt;</Link>
 
       <div className="main__content">
         <Outlet />

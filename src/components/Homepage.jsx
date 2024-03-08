@@ -4,12 +4,14 @@ import { useContext } from "react";
 import Context from "./Context";
 import { Link } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import FilterButton from "./FilterButton";
 
 const Homepage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const { state } = useContext(Context);
+  const [filterColor, setFilterColor] = useState("");
 
   const loadImages = async () => {
     setLoading(true);
@@ -19,7 +21,12 @@ const Homepage = () => {
           import.meta.env.VITE_UNSPLASH_KEY
         }`
       );
-      const data = await response.json();
+      let data = await response.json();
+
+      if (filterColor) {
+        data = data.filter((image) => image.color === filterColor);
+      }
+
       setImages(data);
       setLoading(false);
     } catch (error) {
@@ -30,16 +37,61 @@ const Homepage = () => {
     }
   };
 
-  useEffect(() => {
-    loadImages();
-  }, [page]);
+    useEffect(() => {
+        loadImages();
+    }, [page, filterColor]);
 
+    const applyColorFilter = (color) => {
+        setFilterColor(color);
+     
+        loadImages();
+    };
+
+    const clearFilters = () => {
+        setFilterColor('');
+        loadImages();
+      };
+    
   return (
     <>
       {loading && <div className="loading-bar">Loading...</div>}
       {!loading && (
         <>
           <MySlider />
+          <div className="color-filters">
+             <button onClick={clearFilters} className="filter-button clear-filter">Reset</button>
+            <FilterButton
+              color="#260c0c"
+              label="Dark Green"
+              applyColorFilter={applyColorFilter}
+              colorStyle="#264026"
+            />
+            <FilterButton
+              color="#a6a6a6"
+              label="Light Gray"
+              applyColorFilter={applyColorFilter}
+              colorStyle="#a6a6a6"
+            />
+            <FilterButton
+              color="#0ca6d9"
+              label="Sky Blue"
+              applyColorFilter={applyColorFilter}
+              colorStyle="#0ca6d9"
+            />
+            <FilterButton
+              color="#c0a68c"
+              label="Dark Beige"
+              applyColorFilter={applyColorFilter}
+              colorStyle="#c0a68c"
+            />
+            <FilterButton
+              color="#0c73d9"
+              label="Blue"
+              applyColorFilter={applyColorFilter}
+              colorStyle="#0c73d9"
+            />
+          </div>
+          <br />
           <div className="navigation-buttons">
             <button onClick={() => setPage(Math.max(1, page - 1))}>
               Previous

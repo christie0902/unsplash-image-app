@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Image = () => {
     const { id } = useParams();
@@ -25,7 +26,7 @@ const Image = () => {
         <div className="user-info">
           <img src={image.user.profile_image.medium} alt={image.user.name} className="user-avatar" />
           <div>
-            <h2 className="user-name">{image.user.name}</h2>
+            <Link to={`/author/${image.user.username}`}><h2 className="user-name">{image.user.name}</h2></Link>
        
           </div>
         </div>
