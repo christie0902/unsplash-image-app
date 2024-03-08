@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa'; 
 
 const SearchBar = ({query, setQuery, onSearch}) => {
   return (
@@ -14,7 +15,8 @@ const SearchBar = ({query, setQuery, onSearch}) => {
         className="search-input"
       />
       <Link to={`/search/${query}`} onClick={onSearch} className="search-button">
-        Search
+      <FaSearch />
+        <span className="search-text">Search</span>
       </Link>
     </div>
   );

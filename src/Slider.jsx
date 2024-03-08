@@ -7,15 +7,15 @@ import { useReducer } from "react";
 function MySlider() {
   const [sliderValue,  setSliderValue] = useState(0);
   const {
-        state,
+        state: {image, sliderRate},
         dispatch,
       } = useContext(Context)
 
-
- 
-
       const handleChange = (event, value) => {
-        //compare value with the prev state of slider value then set the state to the value
+        dispatch({
+          type: "image/sliderRate",
+          payload: value
+        })
         if (value > sliderValue) {
             increaseSize(value);
             setSliderValue(value);
@@ -39,7 +39,10 @@ function MySlider() {
       }
 
   return (
-    <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" onChangeCommitted={handleChange} />
+    <>
+    Slide to change image size
+    <Slider defaultValue={sliderRate} aria-label="Default" valueLabelDisplay="auto" onChangeCommitted={handleChange} />
+    </>
   );
 }
 

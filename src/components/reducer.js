@@ -17,6 +17,12 @@ export default function reducer(state, action) {
                     height: state.image.height * (1-action.payload)
                 }
             };
+        
+            case "image/sliderRate":
+                return {
+                    ...state,
+                    sliderRate: action.payload
+                };
     }
   
     return state;
