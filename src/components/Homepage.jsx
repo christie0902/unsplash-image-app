@@ -2,6 +2,7 @@ import MySlider from '../Slider';
 import React, { useState, useEffect } from 'react'
 import { useContext } from "react";
 import Context from "./Context";
+import { Link } from 'react-router-dom';
 
 const Homepage = () => {
   const [images, setImages] = useState([]);
@@ -42,9 +43,14 @@ const Homepage = () => {
         <div className="image-grid">
       {images.map((image) => (
         <div key={image.id} className="image-item">
-          <a href={image.user.links.html} className="image-author" target="_blank" rel="noopener noreferrer">
-            {image.user.name}
-          </a>
+         <Link to={`/author/${image.user.username}`}
+                   
+                   className="image-author"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                 >
+                   {image.user.name}
+                   </Link>
           <div className="image-overlay-container">
           <img
                   src={image.urls.regular}

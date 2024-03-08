@@ -39,6 +39,7 @@ const SearchResults = ({ result }) => {
                 </div>
                 <div className="image-overlay-container">
                 <Link to={`/author/${image.user.username}`}
+                   
                     className="image-author"
                     target="_blank"
                     rel="noopener noreferrer"

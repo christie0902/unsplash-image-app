@@ -180,3 +180,91 @@ img {
   background-color: #0056b3;
   outline: none; 
 }
+
+/* Style author page */
+.author-profile {
+  max-width: 80vw;
+  margin: auto;
+}
+
+.profile-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  border-radius: 50%;
+  margin-right: 20px;
+  width: 128px;
+  height: 128px;
+}
+
+.profile-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.profile-name {
+  margin: 0;
+  color:  #ec85e4;
+}
+
+.profile-bio {
+  margin: 0;
+  color: #666;
+}
+
+.profile-location {
+  color: #999;
+}
+
+.profile-stats {
+  display: flex;
+  margin-top: 10px;
+}
+
+.stat-item {
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.profile-interests {
+  display: flex;
+  margin-top: 10px;
+}
+
+.interest-item {
+  margin-right: 10px;
+  background: #efefef;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* Styling for author's galary */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 16px;
+}
+
+.gallery-item {
+  position: relative;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.photo-details {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
