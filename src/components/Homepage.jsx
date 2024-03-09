@@ -24,11 +24,11 @@ const Homepage = () => {
       let data = await response.json();
 
       if (filterColor) {
-        data = data.filter((image) => image.color === filterColor);
+        data = data.filter((image) => image.color.toLowerCase() === filterColor);
       }
 
       setImages(data);
-      setLoading(false);
+    
     } catch (error) {
       console.error("Error fetching images:", error);
       setImages([]);
@@ -42,7 +42,7 @@ const Homepage = () => {
     }, [page, filterColor]);
 
     const applyColorFilter = (color) => {
-        setFilterColor(color);
+      setFilterColor(color.toLowerCase());
      
         loadImages();
     };
